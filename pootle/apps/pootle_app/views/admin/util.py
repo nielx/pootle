@@ -213,6 +213,7 @@ def process_modelformset(request, model_class, queryset, **kwargs):
         queryset = queryset.filter()
 
     objects = paginate(request, queryset)
+    queryset = queryset.filter()
 
     return formset_class(queryset=objects.object_list), None, objects
 
