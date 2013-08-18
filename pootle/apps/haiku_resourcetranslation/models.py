@@ -53,18 +53,19 @@ class Collection(models.Model):
         return empty_quickstats
 
 
+class TranslationCollection(models.Model):
+    """
+    This class is the equivalent to a translationproject, but then for resources (images).
+    """
+
+    class Meta:
+        unique_together = ('language', 'collection')
+
+    language = models.ForeignKey(Language, db_index=True)
+    collection = models.ForeignKey(Collection, db_index=True)
+    real_path = models.FilePathField(editable=False)
 
 
-# class TranslationCollection(models.Model):
-#     """
-#     This class is the equivalent to a translationproject, but then for resources (images).
-#     """
-#
-#     language = models.ForeignKey(Language, db_index=True)
-#     collection = models.ForeignKey(Collection, db_index=True)
-#     real_path = models.FilePathField(editable=False)
-#
-#
 # class Resource(models.Model):
 #     """
 #     A resource is an image that is translatable. Every image is part of a project.
