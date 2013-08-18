@@ -8,7 +8,12 @@
 from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('haiku_resourcetranslation.views',
-    # Listing of all projects
+    # Listing of all collections
     (r'^$',
         'collections_index'),
+
+    # Specific collection
+    url(r'^(?P<collection_code>[^/]*)/?$',
+        'collection_language_index', name='collection.overview'),
+
 )

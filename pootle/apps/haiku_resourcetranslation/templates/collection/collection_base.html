@@ -1,0 +1,13 @@
+{% extends "base.html"  %}
+
+{% load i18n baseurl %}
+
+{% block title %}{% trans "Resource Collections" %} | {{ block.super }}{% endblock %}
+
+{% block breadcrumbs %}
+{{ block.super }}<li><a href='{{ "/collections/"|l }}'>{% trans "Collections" %}</a></li>
+{% endblock %}
+
+{% block tabs %}
+{% include "collection/collection_menu.html" %}
+{% endblock %}
