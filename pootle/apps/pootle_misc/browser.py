@@ -36,6 +36,12 @@ HEADING_CHOICES = [
         'display_name': _("Project"),
     },
     {
+        'id': 'collection',
+        'class': 'stats',
+        'display_name': _("Collection"),
+    },
+
+    {
         'id': 'language',
         'class': 'stats',
         'display_name': _("Language"),

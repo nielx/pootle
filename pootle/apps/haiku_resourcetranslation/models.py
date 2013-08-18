@@ -12,6 +12,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from pootle_language.models import Language
+from pootle_store.util import empty_quickstats
 
 class Collection(models.Model):
     """
@@ -40,8 +41,32 @@ class Collection(models.Model):
         project_path = os.path.join(settings.RESOURCEDIRECTORY, self.code)
 
         if not os.path.exists(project_path):
+            # will raise an exception if it does not work, so our bases are covered
             os.makedirs(project_path)
 
         self.root_path = project_path
 
         super(Collection, self).save(*args, **kwargs)
+
+    def getquickstats(self):
+        # TODO: implement properly
+        return empty_quickstats
+
+
+
+
+# class TranslationCollection(models.Model):
+#     """
+#     This class is the equivalent to a translationproject, but then for resources (images).
+#     """
+#
+#     language = models.ForeignKey(Language, db_index=True)
+#     collection = models.ForeignKey(Collection, db_index=True)
+#     real_path = models.FilePathField(editable=False)
+#
+#
+# class Resource(models.Model):
+#     """
+#     A resource is an image that is translatable. Every image is part of a project.
+#     """
+#     translation_collection = None

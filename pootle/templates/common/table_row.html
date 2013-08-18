@@ -18,6 +18,12 @@
     title="{{ item.description }}">{{ item.name }}</a>
 </td>
 {% endif %}
+{% if 'collection' in table.fields %}
+<td class="collection">
+  <a href="{% filter l %}/collections/{{ item.code }}/{% endfilter %}"
+    title="{{ item.description }}">{{ item.name }}</a>
+</td>
+{% endif %}
 {% if item.stats %}
 {% if 'progress' in table.fields %}
 <td class="stats-graph">
